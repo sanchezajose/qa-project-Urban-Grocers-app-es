@@ -2,20 +2,12 @@ import sender_stand_request
 import data
 
 
-# Función para cambiar el valor del parámetro Name en el cuerpo de la solicitud
-def get_new_client_kit(kit_body):
-    current_kit_body = data.kit_body.copy()
-    current_kit_body["name"] = kit_body
-    return current_kit_body
-
 def positive_assert(kit_body):
-    kit_body = get_new_client_kit(kit_body)
     response_kit_body = sender_stand_request.post_new_client_kit(kit_body)
     assert response_kit_body.status_code == 201
     assert response_kit_body.json()["name"] == kit_body["name"]
 
 def negative_assert_code_400(kit_body):
-    kit_body = get_new_client_kit(kit_body)
     response_kit_body = sender_stand_request.post_new_client_kit(kit_body)
     assert response_kit_body.status_code == 400
 

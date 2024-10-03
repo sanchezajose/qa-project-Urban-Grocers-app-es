@@ -32,7 +32,7 @@ kit_str_number = {
        "name": "123"
 }
 kit_no_data = {
-       "": ""
+
 }
 kit_int_number = {
        "name": 123

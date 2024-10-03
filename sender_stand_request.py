@@ -3,7 +3,6 @@ import requests
 import data
 from data import user_body, kit_body
 
-
 def post_new_user(user_body):
     return requests.post(configuration.URL_SERVICE + configuration.CREATE_USER_PATH,
                          json=user_body,
@@ -12,8 +11,6 @@ def post_new_user(user_body):
 
 authToken = post_new_user(user_body).json()['authToken']
 response = post_new_user(data.user_body)
-print(response.status_code)
-print("Nuevo Usuario Creado", response.json())
 
 def post_new_client_kit(kit_body):
     headers_kit = data.headers.copy()
@@ -24,7 +21,6 @@ def post_new_client_kit(kit_body):
                          json=kit_body,
                          headers=headers_kit)
 
-print(post_new_client_kit(kit_body).status_code, post_new_client_kit(kit_body).json()["name"])
 
 def get_new_client_kit(kit_body):
     headers_kit = data.headers.copy()
@@ -35,6 +31,4 @@ def get_new_client_kit(kit_body):
                         json=kit_body,
                         headers=headers_kit)
 
-kit_name = get_new_client_kit(kit_body).json()['name']
 response = get_new_client_kit(kit_body)
-print(response.status_code)
